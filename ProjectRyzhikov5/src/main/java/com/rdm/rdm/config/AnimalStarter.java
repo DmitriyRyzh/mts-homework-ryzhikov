@@ -12,15 +12,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 
-@Configuration
+/*@Configuration
 @ConditionalOnClass(CreateAnimalServiceImpl.class)
-@ConditionalOnProperty(name = "animalStarter")
+@ConditionalOnProperty(name = "animalStarter")*/
 
 public class AnimalStarter {
 
-    @Bean
+   /* @Bean
     @Scope("prototype")
     public CreateAnimalService createAnimalService() {
         return new CreateAnimalServiceImpl();
-    }
+    }*/
 }

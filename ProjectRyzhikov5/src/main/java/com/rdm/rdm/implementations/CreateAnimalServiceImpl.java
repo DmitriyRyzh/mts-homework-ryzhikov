@@ -20,15 +20,15 @@ import static java.time.LocalDate.now;
 @Service
 public class CreateAnimalServiceImpl implements CreateAnimalService {
 
-    @Autowired
+    /*@Autowired
     public CreateAnimalServiceImpl(List<String> catNames, List<String> dogNames, List<String> wolfNames, List<String> sharkNames) {
         this.catNames = catNames;
         this.dogNames = dogNames;
         this.wolfNames = wolfNames;
         this.sharkNames = sharkNames;
-    }
+    }*/
 
-
+    @Autowired
     public CreateAnimalServiceImpl(){}
 
     FilesConfig filesConfig = new FilesConfig();
@@ -66,10 +66,15 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
             System.out.print("          Create Animal №" + (i + 1) + ": ");
             animalChooser = i % 4;
             switch (animalChooser) {
-                case 0 -> System.out.println(new Cat(getCatName()));
+                /*case 0 -> System.out.println(new Cat(getCatName()));
                 case 1 -> System.out.println(new Dog(getDogName()));
                 case 2 -> System.out.println(new Shark(getSharkName()));
                 case 3 -> System.out.println(new Wolf(getWolfName()));
+                default -> System.out.println(new Predator());*/
+                case 0 -> System.out.println(new Cat());
+                case 1 -> System.out.println(new Dog());
+                case 2 -> System.out.println(new Shark());
+                case 3 -> System.out.println(new Wolf());
                 default -> System.out.println(new Predator());
             }
         }

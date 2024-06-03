@@ -7,11 +7,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 
-@Configuration
+//@Configuration
 public class BeanConfiguration {
 
-    @Bean
+    /*@Bean
+    @Scope("prototype")
     public CreateAnimalService createAnimalService() {
         return new CreateAnimalServiceImpl();
-    }
+    }*/
 }

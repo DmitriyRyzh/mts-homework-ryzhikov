@@ -6,13 +6,13 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
-@ConditionalOnClass(StarterProps.class)
+/*@Configuration
+@ConditionalOnClass(StarterProps.class)*/
 public class StarterConfiguration {
 
-    @Bean
+   /* @Bean
     public CreateAnimalService createAnimalService(StarterProps cfg) {
         return new CreateAnimalServiceImpl(cfg.getCatNames(), cfg.getDogNames(),
                 cfg.getSharkNames(), cfg.getWolfNames());
-    }
+    }*/
 }

@@ -21,6 +21,12 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
 
     FilesConfig filesConfig = new FilesConfig();
 
+    @PostConstruct
+    void fillFileAnimals() {
+        CreateAnimalService createAnimalService = new CreateAnimalServiceImpl();
+        createAnimalService.createAnimals(5);
+    }
+
     public Map<String, LocalDate> findLeapYearNames(List<Animal> arrayAnimals) throws AnimalArrayNullException, AnimalArrayEmptyException {
         // HW-3-fix Переделал входной аргумент на лист
         if (isInputNull(arrayAnimals)) {

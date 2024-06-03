@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
-@ConfigurationProperties
+//@ConfigurationProperties
 public class StarterProps {
-
+/*
     private List<String> catNames;
     private List<String> dogNames;
     private List<String> wolfNames;
@@ -45,5 +45,5 @@ public class StarterProps {
 
     public void setSharkNames(List<String> sharkNames) {
         this.sharkNames = sharkNames;
-    }
+    }*/
 }
