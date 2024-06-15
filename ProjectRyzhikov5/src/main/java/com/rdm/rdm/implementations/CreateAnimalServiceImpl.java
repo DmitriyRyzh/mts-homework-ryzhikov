@@ -5,6 +5,7 @@ import Interfaces.Animal;
 import Interfaces.CreateAnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -32,13 +33,13 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
     public CreateAnimalServiceImpl(){}
 
     FilesConfig filesConfig = new FilesConfig();
-    //@Value("${catNames}")
+    @Value("${catNames}")
     public List<String> catNames;
-    //@Value("${dogNames}")
+    @Value("${dogNames}")
     public List<String> dogNames;
-    //@Value("${wolfNames}")
+    @Value("${wolfNames}")
     public List<String> wolfNames;
-    //@Value("${sharkNames}")
+    @Value("${sharkNames}")
     public List<String> sharkNames;
 
     @Override
@@ -66,16 +67,16 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
             System.out.print("          Create Animal №" + (i + 1) + ": ");
             animalChooser = i % 4;
             switch (animalChooser) {
-                /*case 0 -> System.out.println(new Cat(getCatName()));
+                case 0 -> System.out.println(new Cat(getCatName()));
                 case 1 -> System.out.println(new Dog(getDogName()));
                 case 2 -> System.out.println(new Shark(getSharkName()));
                 case 3 -> System.out.println(new Wolf(getWolfName()));
-                default -> System.out.println(new Predator());*/
-                case 0 -> System.out.println(new Cat());
+                default -> System.out.println(new Predator());
+                /*case 0 -> System.out.println(new Cat());
                 case 1 -> System.out.println(new Dog());
                 case 2 -> System.out.println(new Shark());
                 case 3 -> System.out.println(new Wolf());
-                default -> System.out.println(new Predator());
+                default -> System.out.println(new Predator());*/
             }
         }
     }
