@@ -6,18 +6,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/params")
 public class ForthController {
 
-    @GetMapping({"/param/{name}","/param"})
+    @GetMapping({"/param/{id}"})
     @ResponseBody
-    public String param(@PathVariable String name) {
-
-        return name;
-    }
-
-    // Или их надо было вытащить в одном Get?
-    @GetMapping({"/param/{name}","/params"})
-    @ResponseBody
-    public String params(@RequestParam String name) {
-        //
-        return name;
+    public String params(@RequestParam String name , @PathVariable String id) {
+        return "Id: " + id + ", Name: " + name;
+        // Пример запроса: http://localhost:8080/params/param/1?name=MyName
     }
 }
