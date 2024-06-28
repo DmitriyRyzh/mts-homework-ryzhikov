@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet author="Aut" id="create tables">
+        <sql>
+            CREATE TABLE IF NOT EXISTS Animals.AnimalType(
+            id           bigint not null primary key,
+            AnimalType   varchar(255)
+            );
+
+            CREATE TABLE IF NOT EXISTS Animals.Animal(
+            id           bigint not null primary key,
+            AnimalTypeId bigint,
+            Breed        varchar(255),
+            Name         varchar(255),
+            Cost         numeric(38, 2),
+            Character    varchar(255)
+            );
+
+        </sql>
+        <rollback>
+            DROP TABLE Animals.Animal;
+            DROP TABLE AnimalType;
+        </rollback>
+        <comment>
+            Первичная инициализация таблиц
+        </comment>
+
+        <loadData file="db/changelog/release-1.0.0/initialize_data1.csv" tableName="AnimalType"/>
+        <loadData file="db/changelog/release-1.0.0/initialize_data2.csv" tableName="Animal"/>
+    </changeSet>
+
+</databaseChangeLog>

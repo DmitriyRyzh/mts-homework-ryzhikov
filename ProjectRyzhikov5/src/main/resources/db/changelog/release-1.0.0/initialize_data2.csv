@@ -1,0 +1,5 @@
+"Id","AnimalTypeId","Breed","Name","Cost","Character"
+1	,1	,b1	,a	,9.99,	Good
+2	,2	,b2	,b	,19.99,	Angry
+3	,3	,b3	,c	,29.99,	Smart
+4	,4	,b4	,d	,39.99,	Lazy

@@ -1,3 +1,22 @@
+spring:
+  application:
+    name: Spring-data
+  datasource:
+  url: jdbc:postgresql://localhost:5432/education
+  username: postgres
+  password: Dima
+  hikari:
+    connectionTimeout: 20000
+    maximumPoolSize: 5
+    connection-init-sql: CREATE SCHEMA IF NOT EXISTS "Animals";
+    schema: Animals
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
 catNames: c1,c2,c3
 dogNames: d1,d2,d3
 wolfNames: w1,w2,w3
