@@ -8,14 +8,19 @@ import javax.persistence.*;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "AnimalType")
+@Table(name = "animaltype")
 public class AnimalTypeDb {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id")
-    private int id;
+    @Column(name = "id")
+    private Long id;
 
-    @Column(name = "AnimalType")
+    @Column(name = "animaltype")
     private String animalType;
+
+    public AnimalTypeDb(Long id, String animalType) {
+        this.id = id;
+        this.animalType = animalType;
+    }
 }

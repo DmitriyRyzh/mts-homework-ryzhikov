@@ -7,6 +7,7 @@ import Interfaces.AnimalsRepository;
 import Interfaces.CreateAnimalService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.rdm.rdm.entity.AnimalDb;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
@@ -183,5 +184,61 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
         CreateAnimalService createAnimalService = new CreateAnimalServiceImpl();
         createAnimalService.createAnimals(4);
     }
+
+//************************ Реализация для сущностей Db
+
+    public Map<String, LocalDate> findLeapYearIdsDb(List<AnimalDb> arrayAnimals)
+            throws AnimalArrayNullException, AnimalArrayEmptyException {
+        if (isInputNullDb(arrayAnimals)) {
+            throw new AnimalArrayNullException();
+        }
+        if (isInputEmptyDb(arrayAnimals)) {
+            throw new AnimalArrayEmptyException();
+        }
+
+        return arrayAnimals.stream()
+                .filter(p -> p.getBirthDate().isLeapYear())
+                .collect(Collectors.toMap(value
+                                -> value.getId()+ " " + value.getName(),
+                        AnimalDb::getBirthDate));
+    }
+
+    public List<String> findMinCostAnimalsDb(List<AnimalDb> arrayAnimals)
+            throws AnimalArrayNullException, AnimalArrayEmptyException {
+        if (isInputNullDb(arrayAnimals)) {
+            throw new AnimalArrayNullException();
+        }
+        if (isInputEmptyDb(arrayAnimals)) {
+            throw new AnimalArrayEmptyException();
+        }
+        return arrayAnimals.stream()
+                .sorted(Comparator.comparing(AnimalDb::getCost))
+                .limit(3)
+                .sorted((o1, o2) -> -o1.getName().compareTo(o2.getName()))
+                .map(AnimalDb::getName)
+                .collect(Collectors.toList());
+    }
+
+    private boolean isInputNullDb(List<AnimalDb> arrayAnimals) {
+        // HW-3-fix Переделал входной аргумент на лист
+        // HW-3-fix Исправлено имя метода, добавлен private
+        return arrayAnimals == null;
+    }
+
+    private boolean isInputEmptyDb(List<AnimalDb> arrayAnimals) {
+        // HW-3-fix Переделал входной аргумент на лист
+        // HW-3-fix Исправлено имя метода, добавлен private
+        // если в массиве нет элементов или хоть один из элементов null
+        if (arrayAnimals.size() < 1) {
+            return true;
+        }
+        for (AnimalDb arrayAnimal : arrayAnimals) {
+            if (arrayAnimal == null) {
+                return true;
+            }
+        }
+        return (false);
+    }
+
 
 }

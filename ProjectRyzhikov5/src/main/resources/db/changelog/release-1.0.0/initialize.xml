@@ -6,31 +6,34 @@
 
     <changeSet author="Aut" id="create tables">
         <sql>
-            CREATE TABLE IF NOT EXISTS Animals.AnimalType(
-            id           bigint not null primary key,
-            AnimalType   varchar(255)
+
+            CREATE TABLE IF NOT EXISTS "animals"."animaltype"(
+            "id"           bigint not null primary key,
+            "animaltype"   varchar(255)
             );
 
-            CREATE TABLE IF NOT EXISTS Animals.Animal(
-            id           bigint not null primary key,
-            AnimalTypeId bigint,
-            Breed        varchar(255),
-            Name         varchar(255),
-            Cost         numeric(38, 2),
-            Character    varchar(255)
+            CREATE TABLE IF NOT EXISTS "animals"."animal"(
+            "id"           bigint not null primary key,
+            "animaltypeid" bigint,
+            "breed"        varchar(255),
+            "name"         varchar(255),
+            "cost"         numeric(38, 2),
+            "character"    varchar(255),
+            "birthdate"    date
             );
+
+            CREATE SEQUENCE IF NOT EXISTS hibernate_sequence START WITH 5 INCREMENT BY 1 ;
 
         </sql>
         <rollback>
-            DROP TABLE Animals.Animal;
-            DROP TABLE AnimalType;
+
         </rollback>
         <comment>
             Первичная инициализация таблиц
         </comment>
 
-        <loadData file="db/changelog/release-1.0.0/initialize_data1.csv" tableName="AnimalType"/>
-        <loadData file="db/changelog/release-1.0.0/initialize_data2.csv" tableName="Animal"/>
+        <loadData file="db/changelog/release-1.0.0/initialize_data1.csv" tableName="animaltype"/>
+        <loadData file="db/changelog/release-1.0.0/initialize_data2.csv" tableName="animal"/>
     </changeSet>
 
 </databaseChangeLog>
